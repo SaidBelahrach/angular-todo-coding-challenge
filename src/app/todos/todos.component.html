@@ -1,0 +1,45 @@
+<div class="bg-light py-5">
+  <h3 class="text-center">Todos</h3>
+  <!-- Todo: Create Form -->
+  <form
+    class="newTodo"
+    [formGroup]="todoForm"
+    (ngSubmit)="createTodo(todoForm.value)"
+  >
+    <div>
+      <div
+        *ngIf="errors !== ''"
+        [innerText]="errors"
+        class="alert alert-danger"
+      ></div>
+      <div
+        *ngIf="
+          !todoForm.controls.name.valid &&
+          todoForm.controls.name.touched &&
+          todoForm.controls.name.dirty
+        "
+        class="alert alert-danger"
+      >
+        Todo name is required
+      </div>
+    </div>
+    <input
+      formControlName="name"
+      aria-label="Add todo"
+      placeholder="+ tap to add a todo"
+      #todoInputRef
+    />
+  </form>
+  <app-todo
+    *ngFor="let t of todos"
+    [todo]="t"
+    (deleteEvent)="deleteTodo($event)"
+    (completeEvent)="completeTodo($event)"
+  ></app-todo>
+  <div *ngIf="todos.length == 0" class="text-secondary text-center">
+    There aren't any todos. Why don't you
+    <a href="Javascript:void(0);" (click)="HandleCreateOneLink($event)"
+      >create one</a
+    >?
+  </div>
+</div>
