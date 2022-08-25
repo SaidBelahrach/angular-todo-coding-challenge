@@ -54,9 +54,4 @@ export class TodosComponent implements OnInit {
     );
     console.log('deleting', todo);
   }
-
-  HandleCreateOneLink(event: MouseEvent) {
-    event.preventDefault();
-    this.todoInputRef.nativeElement.focus();
-  }
 }
