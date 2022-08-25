@@ -1,5 +1,4 @@
 import { ElementRef } from '@angular/core';
-import { OnChanges } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
